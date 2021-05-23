@@ -2,11 +2,12 @@ import SwiftUI
 
 import SwiftUI
 
-struct CalendarView: View {
-    var body: some View {
-        VStack {
-            
-        }
+public struct CalendarView: View {
+    
+    public init() {}
+    
+    public var body: some View {
+        DayView()
     }
 }
 
