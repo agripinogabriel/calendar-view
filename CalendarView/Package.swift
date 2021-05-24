@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "CalendarView",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v11),
         .iOS(.v13),
