@@ -36,12 +36,12 @@ struct WeekView: View {
     }
     
     private func textView(_ text: String) -> some View {
-        return Text(text)
+        Text(text)
             .foregroundColor(.blue)
             .font(
                 .system(
                     size: 12,
-                    weight: .black,
+                    weight: .regular,
                     design: .rounded
                 )
             )
