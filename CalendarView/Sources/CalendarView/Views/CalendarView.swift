@@ -31,9 +31,12 @@ public struct CalendarView: View {
 }
 
 struct CalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarView { _ in
-            
+    static var previews: some View {        
+        VStack {
+            CalendarView(style: .day) { _ in }
+            CalendarView(style: .week) { _ in }
+            CalendarView(style: .month) { _ in }
+            Spacer()
         }
     }
 }
