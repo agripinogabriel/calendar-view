@@ -1,28 +1,25 @@
 import SwiftUI
 
-protocol NavigationControlDelegate {
-    func moveBackward()
-    func moveForward()
-    func moveToCurrentDay()
-}
-
 struct NavigationControlView: View {
-    var delegate: NavigationControlDelegate?
+    
+    var onForward: () -> Void
+    var onBackward: () -> Void
+    var onCurrentDate: () -> Void
     
     var body: some View {
         HStack(spacing: 2) {
-            Button { delegate?.moveBackward() }
+            Button { onBackward() }
                 label: { Image(systemName: "chevron.backward") }
                 .buttonStyle(GrowingButton())
             
-            Button { delegate?.moveToCurrentDay() }
+            Button { onCurrentDate() }
                 label: {
                     Text("Hoje")
                         .font(.system(size: 14))
                 }
                 .buttonStyle(GrowingButton())
             
-            Button { delegate?.moveForward() }
+            Button { onForward() }
                 label: { Image(systemName: "chevron.forward") }
                 .buttonStyle(GrowingButton())
         }
@@ -31,6 +28,12 @@ struct NavigationControlView: View {
 
 struct NavigationControlView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationControlView()
+        NavigationControlView {
+            
+        } onBackward: {
+            
+        } onCurrentDate: {
+            
+        }
     }
 }
