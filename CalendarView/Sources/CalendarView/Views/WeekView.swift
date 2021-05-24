@@ -61,6 +61,7 @@ struct WeekView: View {
     }
     
     private func opacity(for date: Date) -> Double {
+        guard !Calendar.current.isDate(date, inSameDayAs: self.date) else { return 1.0 }
         guard date.isInCurrentMonth else { return 0.3 }
         guard date.isWeekend else { return 1.0 }
         return 0.7
