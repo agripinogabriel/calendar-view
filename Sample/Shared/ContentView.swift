@@ -5,7 +5,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             CalendarView { date in
-                print(formatDate(date))
+                Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
             }
             Spacer()
         }
