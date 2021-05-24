@@ -1,9 +1,35 @@
 # CalendarView
 
-A simple SwiftUI CalendarView
+A simple SwiftUI CalendarView.
+
+## Usage
+To run the example project, clone the repo, and run the project under the Sample directory.
+
+### Code example
+```swift
+CalendarView(date: Date(), onDateChanged: { date in
+    Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
+})
+```
+
+### Customizations
+Comming soon!
+
+## Requirements
+
+* iOS 13+
+* tvOS 13+
+* macOS 11+
+* Xcode 12.5
+
+## Screenshots
+
+### Day mode
+![Day Mode](https://user-images.githubusercontent.com/2865316/119287788-95e7c500-bc1d-11eb-9793-c20a7db395e9.gif)
+
 
 ## Do you like the project?
-Just star ⭐️  the repo and share the code!
+Just star ⭐️&nbsp;the repo and share the code!
 
 ## Having trouble ?
 Email me @ agripinogabriel@gmail.com
