@@ -19,7 +19,7 @@ struct DayView: View {
             dayInfoView(date.weekDayName)
                 .padding(EdgeInsets(top: -50, leading: 0, bottom: 0, trailing: 0))
             
-            dayInfoView(date.monthName)
+            dayInfoView("\(date.monthName) \(date.year)")
                 .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
         }
         .frame(alignment: .top)
