@@ -1,25 +1,20 @@
 import SwiftUI
 
 struct WeekView: View {
+    static private let DAYS_IN_WEEK = 7
     
-    static let ITEM_MIN_WIDHT = CGFloat(80)
-    static let MAX_ITEMS_PER_SCREEN = 7
-    
-    @State var currentDate: Date = Date()
+    @State var currentDate = Date()
     
     var body: some View {
         GeometryReader { geometry in
-            let maxItemsPerScreen = Int(geometry.size.width / WeekView.ITEM_MIN_WIDHT)
-            let itemsPerScreen = min(maxItemsPerScreen, WeekView.MAX_ITEMS_PER_SCREEN)
-            let itemWidth = geometry.size.width / CGFloat(itemsPerScreen)
-             
-            HStack(spacing: 0){
-                ForEach(0..<itemsPerScreen) { index in
+            let itemWidth = geometry.size.width / CGFloat(WeekView.DAYS_IN_WEEK)
+            
+            HStack(spacing: 0) {
+                ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
                     VStack(spacing: 0) {
                         let date = Calendar.current.date(byAdding: .day, value: index, to: currentDate)!
                         textView(date.weekDayName)
                         numberView(date.day)
-                        textView(date.monthName)
                     }
                     .frame(width: itemWidth, alignment: .center)
                 }
