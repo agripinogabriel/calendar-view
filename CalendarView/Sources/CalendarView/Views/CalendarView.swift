@@ -1,13 +1,25 @@
 import SwiftUI
 
-import SwiftUI
-
 public struct CalendarView: View {
+    
+    @State private var date = Date()
     
     public init() {}
     
     public var body: some View {
-        DayView()
+        VStack {
+            HStack {
+                Spacer()
+                NavigationControlView {
+                    date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+                } onBackward: {
+                    date = Calendar.current.date(byAdding: .day, value: -1, to: date)!
+                } onCurrentDate: {
+                    date = Date()
+                }
+            }
+            DayView(date: $date)
+        }
     }
 }
 
