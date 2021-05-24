@@ -4,19 +4,19 @@ extension DateComponents {
     var weekdayName: String? {
         switch weekday {
         case 2:
-            return "Segunda"
+            return "Monday".localized
         case 3:
-            return "Terça"
+            return "Tursday".localized
         case 4:
-            return "Quarta"
+            return "Wednesday".localized
         case 5:
-            return "Quinta"
+            return "Thursday".localized
         case 6:
-            return "Sexta"
+            return "Friday".localized
         case 7:
-            return "Sábado"
+            return "Saturday".localized
         case 1:
-            return "Domingo"
+            return "Sunday".localized
         default:
             return nil
         }
@@ -25,29 +25,29 @@ extension DateComponents {
     var monthName: String? {
         switch month {
         case 1:
-            return "Janeiro"
+            return "January".localized
         case 2:
-            return "Fevereiro"
+            return "February".localized
         case 3:
-            return "Março"
+            return "March".localized
         case 4:
-            return "Abril"
+            return "April".localized
         case 5:
-            return "Maio"
+            return "May".localized
         case 6:
-            return "Junho"
+            return "June".localized
         case 7:
-            return "Julho"
+            return "July".localized
         case 8:
-            return "Agosto"
+            return "August".localized
         case 9:
-            return "Setembro"
+            return "September".localized
         case 10:
-            return "Outrubro"
+            return "October".localized
         case 11:
-            return "Novembro"
+            return "November".localized
         case 12:
-            return "Dezembro"
+            return "December".localized
         default:
             return nil
         }

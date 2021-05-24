@@ -14,7 +14,7 @@ struct NavigationControlView: View {
             
             Button { onCurrentDate() }
                 label: {
-                    Text("Hoje")
+                    Text("Today".localized)
                         .font(.system(size: 14))
                 }
                 .buttonStyle(GrowingButton())
