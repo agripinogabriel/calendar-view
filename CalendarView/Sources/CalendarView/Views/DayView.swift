@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DayView: View {
     
-    @State var date = Date()
+    @Binding var date: Date
     
     var body: some View {
         ZStack {
@@ -40,6 +40,10 @@ struct DayView: View {
 
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
-        DayView()
+        DayView(date: Binding<Date>(get: {
+            return Date()
+        }, set: { (date) in
+            
+        }))
     }
 }
