@@ -6,6 +6,11 @@ extension Date {
         return dateComponents.day!
     }
     
+    var year: Int {
+        let dateComponents = Calendar.current.dateComponents([.year], from: self)
+        return dateComponents.year!
+    }
+    
     var weekDayName: String {
         let dateComponents = Calendar.current.dateComponents([.weekday], from: self)
         return dateComponents.weekdayName!
