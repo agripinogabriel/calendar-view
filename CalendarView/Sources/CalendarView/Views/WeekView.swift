@@ -4,24 +4,34 @@ struct WeekView: View {
     static private let DAYS_IN_WEEK = 7
     
     @Binding var date: Date
+    @State private var totalHeight = CGFloat(100)
     
     var body: some View {
-        GeometryReader { geometry in
-            let itemWidth = geometry.size.width / CGFloat(WeekView.DAYS_IN_WEEK)
-            
-            HStack(spacing: 0) {
-                ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
-                    VStack(spacing: 0) {
-                        let date = Calendar.current.date(byAdding: .day, value: index, to: date)!
-                        textView(date.weekDayName)
-                            .opacity(opacity(for: date))
-                        numberView(date.day)
-                            .opacity(opacity(for: date))
+        VStack {
+            GeometryReader { geometry in
+                let itemWidth = geometry.size.width / CGFloat(WeekView.DAYS_IN_WEEK)
+                
+                HStack(spacing: 0) {
+                    ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
+                        VStack(spacing: 0) {
+                            let date = Calendar.current.date(byAdding: .day, value: index, to: date)!
+                            textView(date.weekDayName)
+                                .opacity(opacity(for: date))
+                            numberView(date.day)
+                                .opacity(opacity(for: date))
+                        }
+                        .frame(width: itemWidth, alignment: .center)
+                        .background(GeometryReader { gp -> Color in
+                            DispatchQueue.main.async {
+                                self.totalHeight = gp.size.height
+                            }
+                            return Color.clear
+                        })
                     }
-                    .frame(width: itemWidth, alignment: .center)
                 }
             }
         }
+        .frame(height: totalHeight)
     }
     
     private func numberView(_ num: Int) -> some View {
@@ -59,6 +69,10 @@ struct WeekView: View {
 
 struct WeekView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekView()
+        WeekView(date: Binding<Date>(get: {
+            return Date()
+        }, set: { (date) in
+            
+        }))
     }
 }
