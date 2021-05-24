@@ -25,7 +25,7 @@ public struct CalendarView: View {
                     onDateChanged(date)
                 }
             }
-            DayView(date: $date)
+            WeekView()
         }
     }
 }
