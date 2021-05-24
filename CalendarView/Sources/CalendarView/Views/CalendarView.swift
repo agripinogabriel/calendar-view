@@ -3,10 +3,12 @@ import SwiftUI
 public struct CalendarView: View {
     
     @State private var date: Date = Date()
+    var style: CalendarStyle = .week
     var onDateChanged: (Date) -> Void =  { _ in }
     
-    public init(date: Date = Date(), onDateChanged: @escaping (Date) -> Void) {
+    public init(date: Date = Date(), style: CalendarStyle = CalendarStyle.week, onDateChanged: @escaping (Date) -> Void) {
         self.date = date
+        self.style = style
         self.onDateChanged = onDateChanged
     }
     
@@ -25,7 +27,14 @@ public struct CalendarView: View {
                     onDateChanged(date)
                 }
             }
-            WeekView()
+            switch style {
+            case .day:
+                DayView(date: $date)
+            case .week:
+                WeekView(date: $date)
+            case .month:
+                Text("Not yet implemented!")
+            }
         }
     }
 }
