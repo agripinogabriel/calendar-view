@@ -14,7 +14,9 @@ struct WeekView: View {
                     VStack(spacing: 0) {
                         let date = Calendar.current.date(byAdding: .day, value: index, to: currentDate)!
                         textView(date.weekDayName)
+                            .opacity(opacity(for: date))
                         numberView(date.day)
+                            .opacity(opacity(for: date))
                     }
                     .frame(width: itemWidth, alignment: .center)
                 }
@@ -46,6 +48,12 @@ struct WeekView: View {
                 )
             )
             .lineLimit(1)
+    }
+    
+    private func opacity(for date: Date) -> Double {
+        guard date.isInCurrentMonth else { return 0.3 }
+        guard date.isWeekend else { return 1.0 }
+        return 0.7
     }
 }
 
