@@ -3,7 +3,7 @@ import SwiftUI
 struct WeekView: View {
     static private let DAYS_IN_WEEK = 7
     
-    @State var currentDate = Date()
+    @Binding var date: Date
     
     var body: some View {
         GeometryReader { geometry in
@@ -12,7 +12,7 @@ struct WeekView: View {
             HStack(spacing: 0) {
                 ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
                     VStack(spacing: 0) {
-                        let date = Calendar.current.date(byAdding: .day, value: index, to: currentDate)!
+                        let date = Calendar.current.date(byAdding: .day, value: index, to: date)!
                         textView(date.weekDayName)
                             .opacity(opacity(for: date))
                         numberView(date.day)
