@@ -49,6 +49,9 @@ public struct CalendarView: View {
                 Text("Not yet implemented!")
             }
         }
+        .onDataChange(of: date) { value in
+            onDateChanged(value)
+        }
     }
 }
 
