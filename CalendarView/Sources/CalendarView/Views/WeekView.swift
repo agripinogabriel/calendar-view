@@ -30,6 +30,7 @@ struct WeekView: View {
                                 return Color.clear
                             }
                         )
+                        .onTapGesture { date = day }
                     }
                 }
             }
