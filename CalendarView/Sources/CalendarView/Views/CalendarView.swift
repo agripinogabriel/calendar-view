@@ -16,18 +16,20 @@ public struct CalendarView: View {
     public var body: some View {
         VStack {
             HStack {
-                let monthName = date.fisrtDayOnWeek.monthName
-                let year = date.fisrtDayOnWeek.year
-                Text("\(monthName), \(String(year))")
-                    .font(
-                        .system(
-                            size: 16,
-                            weight: .black,
-                            design: .rounded
+                if style != .day {
+                    let monthName = date.fisrtDayOnWeek.monthName
+                    let year = date.fisrtDayOnWeek.year
+                    Text("\(monthName), \(String(year))")
+                        .font(
+                            .system(
+                                size: 16,
+                                weight: .black,
+                                design: .rounded
+                            )
                         )
-                    )
-                    .foregroundColor(.blue)
-                    .lineLimit(1)
+                        .foregroundColor(.blue)
+                        .lineLimit(1)
+                }
                 Spacer()
                 NavigationControlView {
                     date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
