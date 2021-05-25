@@ -6,6 +6,11 @@ extension Date {
         return dateComponents.day!
     }
     
+    var month: Int {
+        let dateComponents = Calendar.current.dateComponents([.month], from: self)
+        return dateComponents.month!
+    }
+    
     var year: Int {
         let dateComponents = Calendar.current.dateComponents([.year], from: self)
         return dateComponents.year!
@@ -29,6 +34,10 @@ extension Date {
     var isInCurrentMonth: Bool {
         let dateComponents = Calendar.current.dateComponents([.month], from: self)
         return dateComponents.month == Date.currentMonth
+    }
+    
+    func isSameMonth(of date: Date) -> Bool {
+        return self.month == date.month
     }
     
     static var currentMonth: Int {
