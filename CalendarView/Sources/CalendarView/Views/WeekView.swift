@@ -6,6 +6,12 @@ struct WeekView: View {
     @Binding var date: Date
     @State private var totalHeight = CGFloat(100)
     
+    private var fisrtDayOnView: Date {
+        let dateComponents = Calendar.current.dateComponents([.weekday], from: date)
+        let distanceFromMonday = -1 * ((dateComponents.weekday! + 5) % 7)
+        return Calendar.current.date(byAdding: .day, value: distanceFromMonday, to: date)!
+    }
+    
     var body: some View {
         VStack {
             GeometryReader { geometry in
@@ -30,7 +36,7 @@ struct WeekView: View {
                     }
                     HStack(spacing: 0) {
                         ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
-                            let day = Calendar.current.date(byAdding: .day, value: index, to: date)!
+                            let day = Calendar.current.date(byAdding: .day, value: index, to: fisrtDayOnView)!
                             let isSelected = Calendar.current.isDate(day, inSameDayAs: date)
                             let opacity = opacity(for: day, selected: isSelected)
                             let color = isSelected ? Color(.darkGray) : Color(.lightGray)
