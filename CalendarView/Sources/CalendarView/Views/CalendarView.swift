@@ -17,18 +17,7 @@ public struct CalendarView: View {
         VStack {
             HStack {
                 if style != .day {
-                    let monthName = date.fisrtDayOnWeek.monthName
-                    let year = date.fisrtDayOnWeek.year
-                    Text("\(monthName), \(String(year))")
-                        .font(
-                            .system(
-                                size: 16,
-                                weight: .black,
-                                design: .rounded
-                            )
-                        )
-                        .foregroundColor(.blue)
-                        .lineLimit(1)
+                    CalendarHeaderView(date: date)
                 }
                 Spacer()
                 NavigationControlView(date: $date)
