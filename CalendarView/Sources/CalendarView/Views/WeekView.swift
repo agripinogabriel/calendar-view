@@ -17,29 +17,14 @@ struct WeekView: View {
             GeometryReader { geometry in
                 let itemWidth = geometry.size.width / CGFloat(WeekView.DAYS_IN_WEEK)
                 
-                VStack {
-                    HStack(spacing: 0) {
-                        textView("Monday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                        textView("Tursday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                        textView("Wednesday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                        textView("Thursday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                        textView("Friday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                        textView("Saturday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                        textView("Sunday".localized)
-                            .frame(width: itemWidth, alignment: .center)
-                    }
-                    HStack(spacing: 0) {
-                        ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
-                            let day = Calendar.current.date(byAdding: .day, value: index, to: fisrtDayOnView)!
-                            let isSelected = Calendar.current.isDate(day, inSameDayAs: date)
-                            let opacity = opacity(for: day, selected: isSelected)
-                            let color = isSelected ? Color(.darkGray) : Color(.lightGray)
+                HStack(spacing: 0) {
+                    ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
+                        let day = Calendar.current.date(byAdding: .day, value: index, to: fisrtDayOnView)!
+                        let isSelected = Calendar.current.isDate(day, inSameDayAs: date)
+                        let opacity = opacity(for: day, selected: isSelected)
+                        let color = isSelected ? Color(.darkGray) : Color(.lightGray)
+                        VStack {
+                            textView(day.weekDayName)
                             numberView(day.day, color: color, opacity: opacity)
                         }
                         .frame(width: itemWidth, alignment: .center)
