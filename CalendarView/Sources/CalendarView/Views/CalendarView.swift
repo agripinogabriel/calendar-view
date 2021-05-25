@@ -31,16 +31,7 @@ public struct CalendarView: View {
                         .lineLimit(1)
                 }
                 Spacer()
-                NavigationControlView {
-                    date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
-                    onDateChanged(date)
-                } onBackward: {
-                    date = Calendar.current.date(byAdding: .day, value: -1, to: date)!
-                    onDateChanged(date)
-                } onCurrentDate: {
-                    date = Date()
-                    onDateChanged(date)
-                }
+                NavigationControlView(date: $date)
             }
             switch style {
             case .day:
