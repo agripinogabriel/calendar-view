@@ -11,22 +11,40 @@ struct WeekView: View {
             GeometryReader { geometry in
                 let itemWidth = geometry.size.width / CGFloat(WeekView.DAYS_IN_WEEK)
                 
-                HStack(spacing: 0) {
-                    ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
-                        VStack(spacing: 0) {
-                            let date = Calendar.current.date(byAdding: .day, value: index, to: date)!
-                            textView(date.weekDayName)
-                                .opacity(opacity(for: date))
-                            numberView(date.day)
-                                .opacity(opacity(for: date))
+                VStack {
+                    HStack(spacing: 0) {
+                        textView("Monday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                        textView("Tursday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                        textView("Wednesday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                        textView("Thursday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                        textView("Friday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                        textView("Saturday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                        textView("Sunday".localized)
+                            .frame(width: itemWidth, alignment: .center)
+                    }
+                    HStack(spacing: 0) {
+                        ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
+                            let day = Calendar.current.date(byAdding: .day, value: index, to: date)!
+                            let isSelected = Calendar.current.isDate(day, inSameDayAs: date)
+                            let opacity = opacity(for: day, selected: isSelected)
+                            let color = isSelected ? Color(.darkGray) : Color(.lightGray)
+                            numberView(day.day, color: color, opacity: opacity)
                         }
                         .frame(width: itemWidth, alignment: .center)
-                        .background(GeometryReader { gp -> Color in
-                            DispatchQueue.main.async {
-                                self.totalHeight = gp.size.height
+                        .background(
+                            GeometryReader { gp -> Color in
+                                DispatchQueue.main.async {
+                                    self.totalHeight = gp.size.height
+                                }
+                                return Color.clear
                             }
-                            return Color.clear
-                        })
+                        )
                     }
                 }
             }
@@ -34,7 +52,7 @@ struct WeekView: View {
         .frame(height: totalHeight)
     }
     
-    private func numberView(_ num: Int) -> some View {
+    private func numberView(_ num: Int, color: Color, opacity: Double) -> some View {
         Text("\(num)")
             .font(
                 .system(
@@ -43,8 +61,9 @@ struct WeekView: View {
                     design: .rounded
                 )
             )
-            .foregroundColor(Color(.lightGray))
+            .foregroundColor(color)
             .lineLimit(1)
+            .opacity(opacity)
     }
     
     private func textView(_ text: String) -> some View {
@@ -60,8 +79,8 @@ struct WeekView: View {
             .lineLimit(1)
     }
     
-    private func opacity(for date: Date) -> Double {
-        guard !Calendar.current.isDate(date, inSameDayAs: self.date) else { return 1.0 }
+    private func opacity(for date: Date, selected: Bool) -> Double {
+        guard !selected else { return 1.0 }
         guard date.isInCurrentMonth else { return 0.3 }
         guard date.isWeekend else { return 1.0 }
         return 0.7
