@@ -2,14 +2,19 @@ import SwiftUI
 import CalendarView
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            CalendarView { date in
+        VStack(alignment: .leading) {
+            CalendarView (date: Calendar.dayFirstSunshine, style: .day) { date in
                 Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
             }
+            .padding()
+            CalendarView (date: Calendar.dayFirstSunshine, style: .week) { date in
+                Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
+            }
+            .padding()
             Spacer()
         }
-        .padding()
     }
     
     private func formatDate(_ date: Date) -> String {
