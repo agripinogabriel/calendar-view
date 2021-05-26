@@ -2,6 +2,8 @@ import SwiftUI
 
 public struct CalendarView: View {
     
+    static let DAYS_IN_WEEK = 7
+    
     @State var date = Date()
     @State var style = CalendarStyle.week
     var onDateChanged: (Date) -> Void =  { _ in }
@@ -16,6 +18,7 @@ public struct CalendarView: View {
         VStack {
             HStack {
                 if style != .day {
+                    let date = style == .week ? date.fisrtDayOnWeek : date.firstDayOnMonth
                     CalendarHeaderView(date: date)
                 }
                 Spacer()
@@ -27,7 +30,7 @@ public struct CalendarView: View {
             case .week:
                 WeekView(date: $date)
             case .month:
-                Text("Not yet implemented!")
+                MonthView(date: $date)
             }
         }
         .onDataChange(of: date) { value in

@@ -13,6 +13,10 @@ struct ContentView: View {
                 Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
             }
             .padding()
+            CalendarView (date: Calendar.dayFirstSunshine, style: .month) { date in
+                Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
+            }
+            .padding()
             Spacer()
         }
     }

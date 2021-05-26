@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct WeekView: View {
-    static private let DAYS_IN_WEEK = 7
     
     @Binding var date: Date
     @State private var totalHeight = CGFloat(100)
@@ -9,10 +8,10 @@ struct WeekView: View {
     var body: some View {
         VStack {
             GeometryReader { geometry in
-                let itemWidth = geometry.size.width / CGFloat(WeekView.DAYS_IN_WEEK)
+                let itemWidth = geometry.size.width / CGFloat(CalendarView.DAYS_IN_WEEK)
                 
                 HStack(spacing: 0) {
-                    ForEach(0..<WeekView.DAYS_IN_WEEK) { index in
+                    ForEach(0..<CalendarView.DAYS_IN_WEEK) { index in
                         let day = Calendar.current.date(byAdding: .day, value: index, to: date.fisrtDayOnWeek)!
                         let isSelected = Calendar.current.isDate(day, inSameDayAs: date)
                         let opacity = opacity(for: day, selected: isSelected)

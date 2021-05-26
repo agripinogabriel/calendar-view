@@ -46,6 +46,11 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: distanceFromMonday, to: self)!
     }
     
+    var firstDayOnMonth: Date {
+        let dateComponents = Calendar.current.dateComponents([.month, .year], from: self)
+        return Calendar.current.date(from: dateComponents)!
+    }
+    
     static var currentMonth: Int {
         let dateComponents = Calendar.current.dateComponents([.month], from: Date())
         return dateComponents.month!

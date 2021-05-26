@@ -42,7 +42,8 @@ struct NavigationControlView: View {
     }
     
     private func moveMonthForward() {
-        
+        let firstDayOfMonth = date.firstDayOnMonth
+        date = Calendar.current.date(byAdding: .month, value: 1, to: firstDayOfMonth)!
     }
     
     private func moveBackward() {
@@ -63,7 +64,8 @@ struct NavigationControlView: View {
     }
     
     private func moveMonthBackward() {
-        
+        let firstDayOfMonth = date.firstDayOnMonth
+        date = Calendar.current.date(byAdding: .month, value: -1, to: firstDayOfMonth)!
     }
 }
 
