@@ -47,7 +47,7 @@ struct MonthView: View {
     
     private func opacity(for date: Date, selected: Bool) -> Double {
         guard !selected else { return 1.0 }
-        guard date.isSameMonth(of: self.date) else { return 0.3 }
+        guard date.isSameMonth(of: self.date) else { return 0.2 }
         guard date.isWeekend else { return 1.0 }
         return 0.7
     }
