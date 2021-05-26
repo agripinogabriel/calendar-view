@@ -2,6 +2,8 @@ import SwiftUI
 
 public struct CalendarView: View {
     
+    static let DAYS_IN_WEEK = 7
+    
     @State var date = Date()
     @State var style = CalendarStyle.week
     var onDateChanged: (Date) -> Void =  { _ in }
