@@ -29,7 +29,7 @@ public struct CalendarView: View {
             case .week:
                 WeekView(date: $date)
             case .month:
-                Text("Not yet implemented!")
+                MonthView(date: $date)
             }
         }
         .onDataChange(of: date) { value in
