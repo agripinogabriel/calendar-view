@@ -20,7 +20,7 @@ public struct CalendarView: View {
                     CalendarHeaderView(date: date)
                 }
                 Spacer()
-                NavigationControlView(date: $date)
+                NavigationControlView(date: $date, style: .week)
             }
             switch style {
             case .day:
