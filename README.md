@@ -20,8 +20,11 @@ Comming soon!
 * Xcode 12.5
 
 ## Screenshots
-![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/2865316/119592841-9b751480-bdaf-11eb-8e4f-1f99711a59ea.gif)
-![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/2865316/119592843-9ca64180-bdaf-11eb-8c34-9d1545790db3.gif)
+![Day Mode](https://user-images.githubusercontent.com/2865316/119592841-9b751480-bdaf-11eb-8e4f-1f99711a59ea.gif)
+
+![Week Mode](https://user-images.githubusercontent.com/2865316/119592843-9ca64180-bdaf-11eb-8c34-9d1545790db3.gif)
+
+![Month Mode](https://user-images.githubusercontent.com/2865316/119599561-9fa72f00-bdbb-11eb-94a9-770b9739d87f.gif)
 
 
 ## Do you like the project?
