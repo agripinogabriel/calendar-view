@@ -24,3 +24,11 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+extension Calendar {
+    static var dayFirstSunshine: Date {
+        let dateComponents = DateComponents.init(year: 1987, month: 12, day: 21)
+        let dayFirstSunshine = Calendar.current.date(from: dateComponents)!
+        return dayFirstSunshine
+    }
+}
