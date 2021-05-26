@@ -3,11 +3,8 @@
 A simple SwiftUI CalendarView.
 
 ## Usage
-To run the example project, clone the repo, and run the project under the Sample directory.
-
-### Code example
 ```swift
-CalendarView(date: Date(), onDateChanged: { date in
+CalendarView(style: .day, onDateChanged: { date in
     Logger.logInfo(formatDate(date), scope: "CalendarViewSample")
 })
 ```
@@ -23,9 +20,8 @@ Comming soon!
 * Xcode 12.5
 
 ## Screenshots
-
-### Day mode
-![Day Mode](https://user-images.githubusercontent.com/2865316/119287788-95e7c500-bc1d-11eb-9793-c20a7db395e9.gif)
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/2865316/119592841-9b751480-bdaf-11eb-8e4f-1f99711a59ea.gif)
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/2865316/119592843-9ca64180-bdaf-11eb-8c34-9d1545790db3.gif)
 
 
 ## Do you like the project?
