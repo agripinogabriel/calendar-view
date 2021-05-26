@@ -26,7 +26,10 @@ struct MonthView: View {
                                 let color = isSelected ? Color(.darkGray) : Color(.lightGray)
                                 numberView(day.day, color: color, opacity: opacity)
                                     .frame(width: itemWidth, alignment: .center)
-                                    .onTapGesture { date = day }
+                                    .onTapGesture {
+                                        guard day.isSameMonth(of: date) else { return }
+                                        date = day
+                                    }
                             }
                         }
                     }
