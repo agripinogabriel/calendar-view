@@ -2,14 +2,13 @@ import SwiftUI
 
 public struct CalendarView: View {
     
-    @State private var date: Date = Date()
-    
-    var style: CalendarStyle = .week
+    @State var date = Date()
+    @State var style = CalendarStyle.week
     var onDateChanged: (Date) -> Void =  { _ in }
     
     public init(date: Date = Date(), style: CalendarStyle = CalendarStyle.week, onDateChanged: @escaping (Date) -> Void) {
-        self.date = date
-        self.style = style
+        self._date = State(initialValue: date)
+        self._style = State(initialValue: style)
         self.onDateChanged = onDateChanged
     }
     
@@ -20,7 +19,7 @@ public struct CalendarView: View {
                     CalendarHeaderView(date: date)
                 }
                 Spacer()
-                NavigationControlView(date: $date, style: .week)
+                NavigationControlView(date: $date, style: style)
             }
             switch style {
             case .day:
