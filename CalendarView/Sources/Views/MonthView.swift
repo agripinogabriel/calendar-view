@@ -11,7 +11,7 @@ struct MonthView: View {
             VStack {
                 HStack(spacing: 0) {
                     ForEach(0..<CalendarView.DAYS_IN_WEEK) { index in
-                        let day = Calendar.current.date(byAdding: .day, value: index, to: date.fisrtDayOnWeek)!
+                        let day = Calendar.current.date(byAdding: .day, value: index, to: date.firstDayOnWeek)!
                         textView(day.weekDayName)
                             .frame(width: itemWidth, alignment: .center)
                     }
@@ -40,9 +40,9 @@ struct MonthView: View {
     
     private func dateFor(weekOfMonth: Int, dayOfMonth: Int) -> Date {
         let firstDayOnMonth = date.firstDayOnMonth
-        let fisrtDayOnWeek = firstDayOnMonth.fisrtDayOnWeek
+        let firstDayOnWeek = firstDayOnMonth.firstDayOnWeek
         let factor = (weekOfMonth * 7) + dayOfMonth
-        return Calendar.current.date(byAdding: .day, value: factor, to: fisrtDayOnWeek)!
+        return Calendar.current.date(byAdding: .day, value: factor, to: firstDayOnWeek)!
     }
     
     private func opacity(for date: Date, selected: Bool) -> Double {

@@ -37,8 +37,8 @@ struct NavigationControlView: View {
     }
     
     private func moveWeekForward() {
-        let fisrtDayOnWeek = date.fisrtDayOnWeek
-        date = Calendar.current.date(byAdding: .day, value: 7, to: fisrtDayOnWeek)!
+        let firstDayOnWeek = date.firstDayOnWeek
+        date = Calendar.current.date(byAdding: .day, value: 7, to: firstDayOnWeek)!
     }
     
     private func moveMonthForward() {
@@ -59,8 +59,8 @@ struct NavigationControlView: View {
     }
     
     private func moveWeekBackward() {
-        let fisrtDayOnWeek = date.fisrtDayOnWeek
-        date = Calendar.current.date(byAdding: .day, value: -1, to: fisrtDayOnWeek)!
+        let firstDayOnWeek = date.firstDayOnWeek
+        date = Calendar.current.date(byAdding: .day, value: -1, to: firstDayOnWeek)!
     }
     
     private func moveMonthBackward() {

@@ -18,7 +18,7 @@ public struct CalendarView: View {
         VStack {
             HStack {
                 if style != .day {
-                    let date = style == .week ? date.fisrtDayOnWeek : date.firstDayOnMonth
+                    let date = style == .week ? date.firstDayOnWeek : date.firstDayOnMonth
                     CalendarHeaderView(date: date)
                 }
                 Spacer()

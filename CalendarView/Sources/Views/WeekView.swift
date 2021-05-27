@@ -12,7 +12,7 @@ struct WeekView: View {
                 
                 HStack(spacing: 0) {
                     ForEach(0..<CalendarView.DAYS_IN_WEEK) { index in
-                        let day = Calendar.current.date(byAdding: .day, value: index, to: date.fisrtDayOnWeek)!
+                        let day = Calendar.current.date(byAdding: .day, value: index, to: date.firstDayOnWeek)!
                         let isSelected = Calendar.current.isDate(day, inSameDayAs: date)
                         let opacity = opacity(for: day, selected: isSelected)
                         let color = isSelected ? Color(.darkGray) : Color(.lightGray)

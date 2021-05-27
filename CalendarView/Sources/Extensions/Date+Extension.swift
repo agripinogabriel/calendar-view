@@ -40,7 +40,7 @@ extension Date {
         return self.month == date.month
     }
     
-    var fisrtDayOnWeek: Date {
+    var firstDayOnWeek: Date {
         let dateComponents = Calendar.current.dateComponents([.weekday], from: self)
         let distanceFromMonday = -1 * ((dateComponents.weekday! + 5) % 7)
         return Calendar.current.date(byAdding: .day, value: distanceFromMonday, to: self)!
