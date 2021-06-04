@@ -31,3 +31,18 @@ class CalendarViewTests: XCTestCase {
     }
 
 }
+
+func given<A>(_ description: String, block: () throws -> A) rethrows -> A {
+    Logger.logInfo(description, scope: "1º Given %{public}@")
+    return try XCTContext.runActivity(named: "Given " + description, block: { _ in try block() })
+}
+
+func when<A>(_ description: String, block: () throws -> A) rethrows -> A {
+    Logger.logInfo(description, scope: "2º When %{public}@")
+    return try XCTContext.runActivity(named: "When " + description, block: { _ in try block() })
+}
+
+func then<A>(_ description: String, block: () throws -> A) rethrows -> A {
+    Logger.logInfo(description, scope: "3º Then %{public}@")
+    return try XCTContext.runActivity(named: "Then " + description, block: { _ in try block() })
+}
