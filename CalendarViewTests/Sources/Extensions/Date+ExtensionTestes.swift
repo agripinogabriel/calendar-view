@@ -1,107 +1,175 @@
 import XCTest
-import Quick
-import Nimble
 
 @testable import CalendarView
 
-class DateExtensionTests: QuickSpec {
-    override func spec() {
-        describe("DateExtensitonTests") {
+class DateExtensionTests: XCTestCase {
+    
+    func test_Current_Month() {
+        given("current date") {
+            let date = Date()
             
-            var date: Date!
-
-            beforeEach {
-                let dateComponents = DateComponents.init(year: 1987, month: 12, day: 21)
-                date = Calendar.current.date(from: dateComponents)
-            }
-            
-            describe("when uses class helper func") {
-                let date = Date()
+            when("uses class helper func") {
                 let month = Calendar.current.component(.month, from: date)
                 
-                it("month should match") {
-                    expect(Date.currentMonth).to(equal(month))
+                then("month should match") {
+                    XCTAssertEqual(Date.currentMonth, month)
+                }
+            }
+        }
+    }
+    
+    func test_Weekend() {
+        given("a random saturday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 19)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get TRUE") {
+                    XCTAssertTrue(dateAdvanced.isWeekend)
+                }
+            }
+        }
+        
+        given("a random sunday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 20)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get TRUE") {
+                    XCTAssertTrue(dateAdvanced.isWeekend)
+                }
+            }
+        }
+        
+        given("a random monday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 21)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get FALSE") {
+                    XCTAssertFalse(dateAdvanced.isWeekend)
+                }
+            }
+        }
+        
+        given("a random tuesday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 22)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get FALSE") {
+                    XCTAssertFalse(dateAdvanced.isWeekend)
+                }
+            }
+        }
+        
+        given("a random wednesday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 23)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get FALSE") {
+                    XCTAssertFalse(dateAdvanced.isWeekend)
+                }
+            }
+        }
+        
+        given("a random thursday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 24)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get FALSE") {
+                    XCTAssertFalse(dateAdvanced.isWeekend)
+                }
+            }
+        }
+        
+        given("a random friday") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 25)
+            let date = Calendar.current.date(from: dateComponents)!
+            let random = 7 * Int.random(in: 0...999)
+            let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
+            
+            when("uses the isWeekend func") {
+                then("should get FALSE") {
+                    XCTAssertFalse(dateAdvanced.isWeekend)
+                }
+            }
+        }
+    }
+    
+    func test_Date_Helper_Functions() {
+        given("a base date (12/21/1987)") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 21)
+            let date = Calendar.current.date(from: dateComponents)!
+            
+            when("uses day") {
+                then("must match") {
+                    XCTAssertEqual(date.day, 21)
                 }
             }
             
-            describe(".isWeekend") {
-                describe("when is Saturday") {
-                    let dateComponents = DateComponents.init(year: 1987, month: 12, day: 19)
-                    let date = Calendar.current.date(from: dateComponents)!
-                    
-                    let random = 7 * Int.random(in: 0...999)
-                    
-                    let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
-                    
-                    it("isWeekend name must true") {
-                        expect(dateAdvanced.isWeekend).to(beTrue())
-                    }
-                }
-                
-                describe("when is Sunday") {
-                    let dateComponents = DateComponents.init(year: 1987, month: 12, day: 20)
-                    let date = Calendar.current.date(from: dateComponents)!
-                    
-                    let random = 7 * Int.random(in: 0...999)
-                    
-                    let dateAdvanced = Calendar.current.date(byAdding: .day, value: random, to: date)!
-                    
-                    it("isWeekend name must true") {
-                        expect(dateAdvanced.isWeekend).to(beTrue())
-                    }
+            when("uses month") {
+                then("must match") {
+                    XCTAssertEqual(date.month, 12)
                 }
             }
-
-            describe("when date is used") {
-                it("day must match") {
-                    expect(date.day).to(equal(21))
+            
+            when("uses year") {
+                then("must match") {
+                    XCTAssertEqual(date.year, 1987)
                 }
-                
-                it("month must match") {
-                    expect(date.month).to(equal(12))
+            }
+            
+            when("uses weekDayName") {
+                then("must match") {
+                    XCTAssertEqual(date.weekDayName, "Monday")
                 }
-                
-                it("year must match") {
-                    expect(date.year).to(equal(1987))
+            }
+            
+            when("uses monthName") {
+                then("must match") {
+                    XCTAssertEqual(date.monthName, "December")
                 }
-                
-                it("weekDayName name must match") {
-                    expect(date.weekDayName).to(equal("Monday"))
+            }
+            
+            when("uses isInCurrentMonth") {
+                then("must be false") {
+                    XCTAssertFalse(date.isInCurrentMonth)
                 }
-                
-                it("monthName name must match") {
-                    expect(date.monthName).to(equal("December"))
+            }
+            
+            when("uses isSameMonth") {
+                then("must be false") {
+                    XCTAssertFalse(date.isSameMonth(of: Date()))
                 }
+            }
+        }
+    }
+    
+    func test_SameMonth() {
+        given("a date") {
+            let dateComponents = DateComponents.init(year: 1987, month: 12, day: 21)
+            let date = Calendar.current.date(from: dateComponents)!
+            
+            when("comparing with date in same month") {
+                let newDate = Calendar.current.date(byAdding: .day, value: -13, to: date)!
                 
-                it("isWeekend name must false") {
-                    expect(date.isWeekend).to(beFalse())
-                }
-                
-                it("isInCurrentMonth name must false") {
-                    expect(date.isInCurrentMonth).to(beFalse())
-                }
-                
-                it("isSameMonth name must false") {
-                    expect(date.isSameMonth(of: Date())).to(beFalse())
-                }
-                
-                describe("and is same month") {
-                    let dateComponents = DateComponents.init(year: 1987, month: 12, day: 21)
-                    date = Calendar.current.date(from: dateComponents)
-                    
-                    let newDate = Calendar.current.date(byAdding: .day, value: -13, to: date)!
-                    
-                    it("isSameMonth name must true") {
-                        expect(date.isSameMonth(of: newDate)).to(beTrue())
-                    }
-                }
-                
-                it("firstDayOnWeek must be Monday") {
-                    expect(date.firstDayOnWeek.weekDayName).to(equal("Monday"))
-                }
-                
-                it("firstDayOnMonth name must 1") {
-                    expect(date.firstDayOnMonth.day).to(equal(1))
+                then("isSameMonth must true") {
+                    XCTAssertTrue(date.isSameMonth(of: newDate))
                 }
             }
         }
